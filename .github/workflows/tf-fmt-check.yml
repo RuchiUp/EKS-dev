@@ -14,10 +14,16 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Terraform Format Check
-        run: terraform fmt -check -recursive
+        run: terraform fmt -recursive
 
-      - name: Wrong formatting found
-        if: ${{ failure() && steps.fmt-check.outputs.failure-reason == 'check-failed' }}
-        run: echo "terraform formatting check FAILED"
+      - name: Commit changes
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add .
+          git commit -m "Auto-format Terraform files" || echo "No changes to commit "
+          git push || echo "No changes to push"
+
+     
 
           
