@@ -13,12 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_version: latest
-
       - name: Terraform Format Check
         run: terraform fmt -check -recursive
+
+      - name: Wrong formatting found
+        if: ${{ failure() && steps.fmt-check.outputs.failure-reason == 'check-failed' }}
+        run: echo "terraform formatting check FAILED"
 
           
