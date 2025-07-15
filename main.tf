@@ -25,6 +25,7 @@ resource "aws_subnet" "eks_subnets" {
   vpc_id            = aws_vpc.eks_vpc.id
   cidr_block        = each.value.cidr_block
   availability_zone = each.value.availability_zone
+  map_public_ip_on_launch = true
 
   tags = {
     Name = "eks-subnet-${each.key}"
@@ -61,4 +62,3 @@ resource "aws_route_table_association" "rt_assoc_b" {
   subnet_id      = aws_subnet.eks_subnets["b"].id
   route_table_id = aws_route_table.eks_public_rt.id
 }
-
