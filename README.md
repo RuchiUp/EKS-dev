@@ -25,51 +25,125 @@ Before you begin, make sure the following tools and configurations are in place:
 Update these variables in your Terraform config as per your use case:
 
 cluster_name           = "eks-demo"
+
+
 cluster_role_name      = "eksClusterRole"
+
+
 endpoint_public_access = true
+
+
 node_group_name = "eks-node-group"
+
+
 node_role_name  = "eksNodeRole"
+
+
 instance_types  = ["t3.medium"]
+
+
 desired_size    = 2
+
+
 max_size        = 3
+
+
 min_size        = 1
 
 
+
+
 karpenter_instance_profile_name     = "eks-demo-karpenter-node-instance-profile"
+
+
 karpenter_queue_name                = "eks-demo-karpenter"
 
 
+
+
 argocd_release_name   = "argocd"
+
+
 argocd_chart_version  = "7.7.3"
+
+
 argocd_namespace      = "argocd"
+
+
 argocd_repository     = "https://argoproj.github.io/argo-helm"
+
+
 argocd_chart_name     = "argo-cd"
+
+
 argocd_service_type   = "LoadBalancer" options (NodePort, clusterIP, LoadBalancer)
 
 
+
+
 coredns_release_name   = "coredns"
+
+
 coredns_chart_version  = "1.29.0"
+
+
 coredns_namespace      = "kube-system"
+
+
 coredns_repository     = "https://coredns.github.io/helm"
+
+
 coredns_chart_name     = "coredns"
+
+
 coredns_service_name   = "kube-dns"
+
+
 coredns_cluster_ip     = "" # Must be within your VPC CIDR
+
+
 coredns_port           = 53
+
+
 coredns_image_tag      = "v1.11.1"
+
+
 coredns_replica_count  = 2
+
+
 coredns_cpu_limit      = "100m"
+
+
 coredns_memory_limit   = "128Mi"
+
+
 coredns_cpu_request    = "100m"
+
+
 coredns_memory_request = "128Mi"
 
 
+
+
 security_group_name        = "eks-cluster-sg"
+
+
 security_group_description = "Allow all EKS traffic"
+
+
 ingress_cidr_blocks        = ["0.0.0.0/0"]
+
+
 egress_cidr_blocks         = ["0.0.0.0/0"]
 
+
+
 ##**SECURITY WARNING:** Current configuration allows all traffic, restrict CIDRs for production use
+
+
 oidc_client_id_list     = ["sts.amazonaws.com"]
+
+
 oidc_thumbprint_list    = ["9e99a48a9960b14926bb7f3b02e22da0a82a5f5c"]
 
 
