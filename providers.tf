@@ -14,10 +14,10 @@ terraform {
 }
 
 provider "aws" {
-  region     = "us-west-2"
+  region     = ""
   access_key = ""
   secret_key = ""
-  profile    = "Ruchi_demo"
+  profile    = ""
 
 }
 provider "helm" {
